@@ -7,11 +7,11 @@ def dashboard(request):
     return render(request, 'myapp/dashboard.html')
 
 class TemperatureDetailView(generics.RetrieveAPIView):
-    queryset = Temperature.objects.all()
+    queryset = Temperature.objects.all().order_by('-timestamp')
     serializer_class = TemperatureSerializer
 
 class TemperatureListView(generics.ListAPIView):
-    queryset = Temperature.objects.all()
+    queryset = Temperature.objects.all().order_by('-timestamp')
     serializer_class = TemperatureSerializer
 
 class TemperatureCreateAPIView(generics.CreateAPIView):
